@@ -210,60 +210,6 @@ Welcome to <strong>“How Robots Move”</strong>, an interactive and engaging c
 
 <h1 style="font-size:28px; font-weight:700; color:#c9d1d9;">Simulate. Innovate. Elevate.</h1>
 
-<ul style="font-size:16px; line-height:1.7;">
- <p>Now let’s make our first simulation in the construct platform</p>
-   <li><strong>Go to The Construct</strong> platform and log in to your account.
-   <a href="https://www.theconstruct.ai/" target="_blank" rel="noopener noreferrer">Visit The Construct – Robotics & ROS Learning Platform</a></li>
-   <p><img src="open construct.png" alt="Open Construct Screenshot" /></p>
-  
-   <li><strong> A window will appear showing welcome to construct and select the basic robotics course </strong> </li>
-   <p><img src="welcome to consttuct.png" alt="Click on My ROSject Screenshot" /></p>
-
-   <li><strong>After clicking the course , click on the box showing open course </strong> </li>
-   <p><img src="open the course.png" alt="Click on My ROSject Screenshot" /></p>
-   
-   <li><strong>Click on home button showing in the right side down </strong> .</li>
-   <p><img src="click on home.png" alt="Click on My ROSject Screenshot" /></p>
-
-   <li><strong>Click on My ROSjects </strong></li>
-   <p><img src="my rosjects.png" alt="Click on My ROSject Screenshot" /></p>
-
-   <li><strong>Click on My ROSjects on the left side menu.</strong></li>
-   <p><img src="click on my rosject.png" alt="Click on My ROSject Screenshot" /></p>
-   
-   <li><strong>Select New Project</strong> to create a new ROSject workspace.</li>
-   <p><img src="click on new proje  t.png" alt="New Project Screenshot" /></p>
-
-   <li><strong>Choose ROS2 Humble</strong> as your base environment.</li>
-   <p><img src="click on ros humble.png" alt="Select ROS Humble Screenshot" /></p>
-
-   <li><strong>Select Create from Scratch</strong> to start with a clean simulation setup.</li>
-   <p><img src="create from scratch.png" alt="Create from Scratch Screenshot" /></p>
-
-   <li><strong>Give your project a meaningful title</strong> and click Create.</li>
-   <p><img src="give a working title.png" alt="Project Title Screenshot" /></p>
-
-   <li><strong>Click on the run to start the rosject</strong></li>
-   <p><img src="run the rosject.png" alt="Run ROSject Screenshot" /></p>
-
-   <li><strong>Click on Open Tools</strong> and choose Terminal.</li>
-   <p><img src="termminal opening.png" alt="Open Terminal Screenshot" /></p>
-
-   
-   <li><strong>Maximize the terminal window</strong> for better visibility.</li>
-   <p><img src="click on terminal and maxmise.png" alt="Maximize Terminal Screenshot" /></p>
-
-   <li><strong>Click on the gazebo engine in the  bottom task bar </strong> and run the gazebo engine .</li>
-   <p><img src="click on the gazebo.png" alt="Simulation Terminal Screenshot" /></p>
-
-   <li><strong>After the terminal and the gazebo  windows it will look like the following way </strong></li>
-   <p><img src="gazebo and termina.png" alt="Launch Simulation Screenshot" /></p>
-  <li><strong>Now you can close the gazebo engine and start working with the simulation </strong> </li>
-  </ul>
-
-
-<hr />
-
 <h1 style="font-size:32px; font-weight:800; margin:0.75em 0;">Launching the NxtBot Simulation</h1>
 <h2 style="font-size:22px; font-weight:800; margin:0.5em 0;">Step 1: Clone the repository</h2>
 <p>
@@ -502,29 +448,31 @@ Before diving into automation and sensor-based navigation, it’s essential to f
 ">
   <h1 style="text-align:center; font-size:32px; font-weight:800; color:#4dd0e1; margin-bottom:15px;">
     Understanding <code>/cmd_vel</code> — Linear & Angular Velocities
-  </h1>
+</h1>
 
-  <p style="font-size:17px; line-height:1.8; color:#e0f2f1;">
+<p style="font-size:17px; line-height:1.8; color:#e0f2f1;">
     In ROS 2, the topic <strong><code>/cmd_vel</code></strong> (short for <em>command velocity</em>)
     is the standard channel used to control a robot’s movement. It carries messages of type
     <strong><code>geometry_msgs/Twist</code></strong>.
-  </p>
+</p>
 
-  <p style="font-size:17px; line-height:1.8; color:#b2ebf2;">
+<p style="font-size:17px; line-height:1.8; color:#b2ebf2;">
     This message defines how fast the robot moves forward/backward and how quickly it turns.
-  </p>
+</p>
 
-  <h2 style="color:#80deea; font-weight:700; margin-top:20px;">🧭 The <code>Twist</code> Message Structure</h2>
-  <pre style="
-      background:#0b0f14; 
-      color:#cfd8dc; 
-      padding:14px; 
-      border-radius:10px; 
-      font-size:15px; 
-      border:1px solid #263238;
-      overflow:auto;
-    ">
-<code>geometry_msgs/msg/Twist:
+<h2 style="font-weight:700; margin-top:20px;">🧭 The <code>Twist</code> Message Structure</h2>
+
+<div style="
+  background:#161b22; 
+  padding:1em; 
+  border-radius:10px; 
+  color:#fff; 
+  font-size:15px; 
+  white-space:pre; 
+  box-shadow:0 0 12px rgba(0,0,0,0.35);
+  font-family:'Consolas','Courier New',monospace;
+">
+geometry_msgs/msg/Twist:
   linear:
     x: 0.0   # forward/backward
     y: 0.0   # (used for strafing — mostly for drones or holonomic bots)
@@ -533,7 +481,8 @@ Before diving into automation and sensor-based navigation, it’s essential to f
     x: 0.0
     y: 0.0
     z: 0.0   # rotation about the vertical axis (yaw)
-</code></pre>
+</div>
+
 
   <h2 style="color:#80deea; font-weight:700;">⚙️ How It Works</h2>
   <ul style="line-height:1.8; font-size:16px; color:#e0f7fa;">
@@ -567,19 +516,34 @@ ros2 run turtlebot3_teleop teleop_keyboard</code><button class="copy-btn">Copy</
 <p>
 After successfully launching the teleoperation node, use the keys below to navigate the robot inside the warehouse simulation environment:
 </p>
-
-<div style="background:linear-gradient(135deg,#1e3a8a,#1d4ed8); border-radius:12px; padding:20px; text-align:center; color:#dbeafe; box-shadow:0 3px 14px rgba(0,0,0,0.35); width:70%; margin:auto;">
+<div style="background:linear-gradient(135deg,#1e3a8a,#1d4ed8); 
+            border-radius:12px; 
+            padding:20px; 
+            text-align:center; 
+            color:#dbeafe; 
+            box-shadow:0 3px 14px rgba(0,0,0,0.35); 
+            width:70%; 
+            margin:auto;">
   <p style="font-size:17px; margin:0; line-height:1.6;">
     <span style="display:block; font-weight:700;">Moving Around:</span>
   </p>
-  <pre style="font-family:'Consolas','Courier New',monospace; font-size:17px; color:#fff; margin:10px 0;">        W → Move Forward
+
+  <div style="font-family:'Consolas','Courier New',monospace; 
+              font-size:17px; 
+              color:#fff; 
+              margin:10px 0; 
+              white-space:pre;">
+        W → Move Forward
    A → Turn Left     D → Turn Right
-        X → Move Backward</pre>
+        X → Move Backward
+  </div>
+
   <p style="font-size:16px;">
     <code>Space</code> or <code>S</code> → Force Stop<br>
     <code>Ctrl + C</code> → Quit Teleoperation
   </p>
 </div>
+
 
 <!-- Pro Tip -->
 <div style="background:linear-gradient(135deg,#1e3a8a,#1d4ed8); border-left:8px solid #58a6ff; padding:18px 24px; border-radius:12px; margin:1.5em 0; color:#dbeafe; box-shadow:0 4px 16px rgba(0,0,0,0.35);">
@@ -600,6 +564,46 @@ After successfully launching the teleoperation node, use the keys below to navig
          style="max-width:90%; border-radius:10px; box-shadow:0 4px 20px rgba(0,0,0,0.4);" />
   <p>This will safely reset the simulation and prepare the robot for another teleoperation attempt.</p>
 </div>
+
+<!-- ========================= -->
+<!-- 🎥 Embedded .webm Video Block -->
+<!-- ========================= -->
+<div style="
+  max-width:850px;
+  margin:2em auto;
+  background:linear-gradient(145deg,#0f141a 0%,#171c23 100%);
+  padding:25px;
+  border-radius:14px;
+  box-shadow:0 4px 16px rgba(0,0,0,0.25);
+  text-align:center;
+  font-family:'Segoe UI',sans-serif;
+">
+
+  <h2 style="color:#4dd0e1; font-size:24px; font-weight:800; margin-bottom:15px;">
+    🎥 Demonstration: Robot Movement Simulation
+  </h2>
+
+  <video controls
+         autoplay
+         muted
+         loop
+         style="
+           width:85%;
+           max-width:750px;
+           border-radius:12px;
+           box-shadow:0 4px 14px rgba(0,0,0,0.4);
+           margin-top:10px;
+         ">
+    <source src="teleop.webm" type="video/webm">
+    <source src="robot_motion.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+
+  <p style="font-size:15px; color:#b0bec5; margin-top:12px;">
+    <em>▲ Watch the robot execute linear and angular velocity commands in the simulation environment.</em>
+  </p>
+</div>
+
 
 <!-- ===================== CHUNK 4 (Enhanced Dark Visuals) ===================== -->
 
@@ -773,6 +777,44 @@ ros2 run turtlebot3_teleop teleop_keyboard</code><button class="copy-btn">Copy</
 <hr style="border:none; border-top:1px solid #30363d; margin:2em 0;" />
 
 
+<!-- ========================= -->
+<!-- 🎥 Embedded .webm Video Block -->
+<!-- ========================= -->
+<div style="
+  max-width:850px;
+  margin:2em auto;
+  background:linear-gradient(145deg,#0f141a 0%,#171c23 100%);
+  padding:25px;
+  border-radius:14px;
+  box-shadow:0 4px 16px rgba(0,0,0,0.25);
+  text-align:center;
+  font-family:'Segoe UI',sans-serif;
+">
+
+  <h2 style="color:#4dd0e1; font-size:24px; font-weight:800; margin-bottom:15px;">
+    🎥 Demonstration: Visualizing in RViz2
+  </h2>
+
+  <video controls
+         autoplay
+         muted
+         loop
+         style="
+           width:85%;
+           max-width:750px;
+           border-radius:12px;
+           box-shadow:0 4px 14px rgba(0,0,0,0.4);
+           margin-top:10px;
+         ">
+    <source src="rviz_teleop.webm" type="video/webm">
+    <source src="robot_motion.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+
+  <p style="font-size:15px; color:#b0bec5; margin-top:12px;">
+    <em>▲ Watch the robot executing teleoperation in the simulation environment and visualize RViz2 through the Camera feed and Laser scan topics.</em>
+  </p>
+</div>
 
 
 
@@ -946,10 +988,10 @@ class ObstacleAvoidance(Node):
       
         if front_distance < threshold_distance:
             # Obstacle detected in front, turn
-            twist.angular.z = 0.5  # Turn rate
+            twist.angular.z = 0.10  # Turn rate
         else:
             # No obstacle, move forward
-            twist.linear.x = 0.2  # Forward speed
+            twist.linear.x = 0.25  # Forward speed
       
         self.publisher.publish(twist)
 
@@ -1003,11 +1045,12 @@ if __name__ == '__main__':
   <img src="clickon setup.png" alt="Open File in Editor Screenshot" style="width:75%; border-radius:10px; box-shadow:0 4px 14px rgba(0,0,0,0.35);" />
 </p>
 
-<pre style="background:#161b22; padding:1em; border-radius:12px; color:#fff; font-size:15px;"><code>entry_points={
-    'console_scripts': [
-        'laser_obstacle_avoidance = obstacle_avoidance.laser_obstacle_avoidance:main'
-    ],
-},</code><button class="copy-btn">Copy</button></pre>
+<pre style="background:#161b22; padding:1em; border-radius:12px; color:#fff; font-size:15px;"><code>  entry_points={
+        'console_scripts': ['laser_obstacle_avoidance = obstacle_avoidance.laser_obstacle_avoidance:main'
+        ],
+    },
+)
+</code><button class="copy-btn">Copy</button></pre>
 
 <!-- Note Box -->
 <div style="background:linear-gradient(135deg,#7f1d1d,#991b1b); border-left:8px solid #ef4444; padding:16px 20px; border-radius:10px; color:#fee2e2; margin:1.5em 0; box-shadow:0 4px 18px rgba(0,0,0,0.3);">
@@ -1049,6 +1092,46 @@ source install/setup.bash</code><button class="copy-btn">Copy</button></pre>
   <li>Changing the <strong>twist.linear.x</strong> and <strong>twist.angular.z</strong> values to modify the robot’s speed and turning rate.</li>
 </ul>
 
+<!-- ========================= -->
+<!-- 🎥 Embedded .webm Video Block -->
+<!-- ========================= -->
+<div style="
+  max-width:850px;
+  margin:2em auto;
+  background:linear-gradient(145deg,#0f141a 0%,#171c23 100%);
+  padding:25px;
+  border-radius:14px;
+  box-shadow:0 4px 16px rgba(0,0,0,0.25);
+  text-align:center;
+  font-family:'Segoe UI',sans-serif;
+">
+
+  <h2 style="color:#4dd0e1; font-size:24px; font-weight:800; margin-bottom:15px;">
+    🎥 Demonstration: Obstacle Avoidance 
+  </h2>
+
+  <video controls
+         autoplay
+         muted
+         loop
+         style="
+           width:85%;
+           max-width:750px;
+           border-radius:12px;
+           box-shadow:0 4px 14px rgba(0,0,0,0.4);
+           margin-top:10px;
+         ">
+    <source src="" type="video/webm">
+    <source src="obstacle.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+
+  <p style="font-size:15px; color:#b0bec5; margin-top:12px;">
+    <em>▲ Watch the robot execute obstacle avoidance in the simulation environment.</em>
+  </p>
+</div>
+
+
 <hr style="border:none; border-top:1px solid #30363d; margin:1.5em 0;" />
 <!-- ===================== CHUNK 5 (Enhanced Dark Visuals) ===================== -->
 
@@ -1083,6 +1166,7 @@ source install/setup.bash</code><button class="copy-btn">Copy</button></pre>
   <li>Use the provided code template to program your robot to execute the move-and-capture operation.</li>
   <li>Create a Python file in the following directory:
     <pre style="background:#161b22; padding:1em; border-radius:10px; color:#fff;"><code>sudo apt install ros-humble-cv-bridge python3-opencv
+pip install "numpy<2" --force-reinstall
 cd ~/simulation_ws/src/scripts
 touch move_and_capture.py</code><button class="copy-btn">Copy</button></pre>
   </li>
@@ -1287,6 +1371,10 @@ if __name__ == '__main__':
     main()
  </code><button class="copy-btn">Copy</button></pre>
 
+  <li>Run the above python file in the terminal:
+    <pre style="background:#161b22; padding:1em; border-radius:10px; color:#fff;"><code>
+python3 move_and_capture.py</code><button class="copy-btn">Copy</button></pre>
+  </li>
 <hr style="border:none; border-top:1px solid #30363d; margin:1.5em 0;" />
 
 <h2 id="final-thoughts" style="color:#79c0ff;">Final Thoughts</h2>
