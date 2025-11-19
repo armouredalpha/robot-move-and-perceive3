@@ -1,0 +1,1353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Workshop Commands | Akash Kanagala</title>
+
+  <!-- Syntax Highlighting -->
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+  <style>
+    /* ---------- Global Theme ---------- */
+    body {
+      font-family: "Segoe UI", sans-serif;
+      background-color: #0d1117;
+      color: #e6edf3;
+      margin: 2.5em;
+      line-height: 1.7;
+      transition: all 0.3s ease-in-out;
+    }
+
+    h1, h2, h3 {
+      color: #58a6ff;
+      transition: color 0.3s ease-in-out;
+    }
+
+    h1:hover, h2:hover {
+      color: #79c0ff;
+      text-shadow: 0 0 8px rgba(88,166,255,0.4);
+    }
+
+    hr {
+      border: none;
+      border-top: 1px solid #30363d;
+      margin: 1.5em 0;
+    }
+
+    p, li {
+      color: #c9d1d9;
+      font-size: 1.05rem;
+    }
+
+    /* ---------- Lists ---------- */
+    ul {
+      padding-left: 1.5em;
+      list-style-type: disc;
+    }
+
+    li {
+      margin: 0.5em 0;
+    }
+
+    /* ---------- Code Blocks ---------- */
+    pre {
+      position: relative;
+      background: #161b22;
+      color: #fff;
+      padding: 1em;
+      border-radius: 12px;
+      font-size: 15px;
+      overflow: auto;
+      margin-bottom: 1.5em;
+      box-shadow: 0 0 18px rgba(0,0,0,0.35);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    pre:hover {
+      transform: scale(1.01);
+      box-shadow: 0 0 28px rgba(88,166,255,0.15);
+    }
+
+    code {
+      font-family: "Fira Code", monospace;
+    }
+
+    /* ---------- copybutton ---------- */
+   
+  .copy-btn {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: #00bcd4;
+    border: none;
+    color: white;
+    padding: 6px 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 13px;
+    transition: all 0.25s ease;
+  }
+  .copy-btn:hover {
+    background: #0096aa;
+    transform: scale(1.05);
+  }
+
+
+
+
+    /* ---------- Tables ---------- */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1.5em 0;
+      font-size: 17px;
+      border-radius: 10px;
+      overflow: hidden;
+      text-align: center;
+      border: 1px solid #30363d;
+      box-shadow: 0 4px 18px rgba(0,0,0,0.25);
+    }
+
+    th {
+      background-color: #161b22;
+      color: #58a6ff;
+      padding: 14px;
+    }
+
+    td {
+      padding: 12px;
+      background-color: #0d1117;
+      color: #c9d1d9;
+    }
+
+    tr:nth-child(even) td {
+      background-color: #161b22;
+    }
+
+    /* ---------- Images ---------- */
+    img {
+      display: block;
+      margin: 1.5em auto;
+      width: 70%;
+      height: auto;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    img:hover {
+      transform: scale(1.03);
+      box-shadow: 0 0 30px rgba(88,166,255,0.2);
+    }
+
+    /* ---------- Sections ---------- */
+    .section-card {
+      background: #161b22;
+      padding: 25px;
+      border-left: 8px solid #58a6ff;
+      border-radius: 12px;
+      margin: 1.5em 0;
+      box-shadow: 0 4px 18px rgba(0,0,0,0.25);
+      transition: all 0.3s ease;
+    }
+
+    .section-card:hover {
+      transform: scale(1.01);
+      border-left-color: #79c0ff;
+      box-shadow: 0 6px 25px rgba(88,166,255,0.15);
+    }
+
+    /* ---------- Links ---------- */
+    a {
+      color: #58a6ff;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    /* ---------- Fade Animation ---------- */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    body > * {
+      animation: fadeIn 0.8s ease both;
+    }
+  </style>
+</head>
+<body>
+
+<center>
+<h1 style="font-size:48px; font-weight:900; text-align:center; margin:0.6em 0;">
+How Robots Move: An Interactive Exploration with NxtBot
+</h1>
+</center>
+
+<hr />
+<h1 style="font-size:32px; font-weight:800; margin:0.75em 0;">Introduction to the Class</h1>
+<p>
+Welcome to <strong>“How Robots Move”</strong>, an interactive and engaging class designed to demystify the fascinating world of robotic locomotion.
+</p>
+
+<hr />
+<h1 style="font-size:32px; font-weight:800; margin:0.75em 0;">Class Objectives</h1>
+<p>By the end of this class, you will:</p>
+<ul>
+  <li>Understand various methods of robot movement and their applications.</li>
+  <li>Gain hands-on experience with the <strong>NxtBot</strong> simulation environment to visualize and simulate robotic tasks.</li>
+  <li>Learn practical coding skills for implementing <strong>obstacle avoidance using laser sensors (lidar)</strong>.</li>
+  <li>Comprehend <strong>navigation systems</strong> and their components in a robotic context.</li>
+  <li>Develop <strong>problem-solving skills</strong> by designing and tackling movement challenges.</li>
+</ul>
+
+<hr />
+
+<h1 style="font-size:28px; font-weight:700; color:#c9d1d9;">Simulate. Innovate. Elevate.</h1>
+
+<ul style="font-size:16px; line-height:1.7;">
+ <p>Now let’s make our first simulation in the construct platform</p>
+   <li><strong>Go to The Construct</strong> platform and log in to your account.
+   <a href="https://www.theconstruct.ai/" target="_blank" rel="noopener noreferrer">Visit The Construct – Robotics & ROS Learning Platform</a></li>
+   <p><img src="open construct.png" alt="Open Construct Screenshot" /></p>
+  
+   <li><strong> A window will appear showing welcome to construct and select the basic robotics course </strong> </li>
+   <p><img src="welcome to consttuct.png" alt="Click on My ROSject Screenshot" /></p>
+
+   <li><strong>After clicking the course , click on the box showing open course </strong> </li>
+   <p><img src="open the course.png" alt="Click on My ROSject Screenshot" /></p>
+   
+   <li><strong>Click on home button showing in the right side down </strong> .</li>
+   <p><img src="click on home.png" alt="Click on My ROSject Screenshot" /></p>
+
+   <li><strong>Click on My ROSjects </strong></li>
+   <p><img src="my rosjects.png" alt="Click on My ROSject Screenshot" /></p>
+
+   <li><strong>Click on My ROSjects on the left side menu.</strong></li>
+   <p><img src="click on my rosject.png" alt="Click on My ROSject Screenshot" /></p>
+   
+   <li><strong>Select New Project</strong> to create a new ROSject workspace.</li>
+   <p><img src="click on new proje  t.png" alt="New Project Screenshot" /></p>
+
+   <li><strong>Choose ROS2 Humble</strong> as your base environment.</li>
+   <p><img src="click on ros humble.png" alt="Select ROS Humble Screenshot" /></p>
+
+   <li><strong>Select Create from Scratch</strong> to start with a clean simulation setup.</li>
+   <p><img src="create from scratch.png" alt="Create from Scratch Screenshot" /></p>
+
+   <li><strong>Give your project a meaningful title</strong> and click Create.</li>
+   <p><img src="give a working title.png" alt="Project Title Screenshot" /></p>
+
+   <li><strong>Click on the run to start the rosject</strong></li>
+   <p><img src="run the rosject.png" alt="Run ROSject Screenshot" /></p>
+
+   <li><strong>Click on Open Tools</strong> and choose Terminal.</li>
+   <p><img src="termminal opening.png" alt="Open Terminal Screenshot" /></p>
+
+   
+   <li><strong>Maximize the terminal window</strong> for better visibility.</li>
+   <p><img src="click on terminal and maxmise.png" alt="Maximize Terminal Screenshot" /></p>
+
+   <li><strong>Click on the gazebo engine in the  bottom task bar </strong> and run the gazebo engine .</li>
+   <p><img src="click on the gazebo.png" alt="Simulation Terminal Screenshot" /></p>
+
+   <li><strong>After the terminal and the gazebo  windows it will look like the following way </strong></li>
+   <p><img src="gazebo and termina.png" alt="Launch Simulation Screenshot" /></p>
+  <li><strong>Now you can close the gazebo engine and start working with the simulation </strong> </li>
+  </ul>
+
+
+<hr />
+
+<h1 style="font-size:32px; font-weight:800; margin:0.75em 0;">Launching the NxtBot Simulation</h1>
+<h2 style="font-size:22px; font-weight:800; margin:0.5em 0;">Step 1: Clone the repository</h2>
+<p>
+First, clone the NxtBot simulation repository to your rosject workspace in the terminal.
+</p>
+
+<pre><code>git clone https://github.com/niat-robotics/simulation_ws.git</code><button class="copy-btn">Copy</button></pre>
+
+<li>After the repository is cloned, you can see the following output in your terminal.</li>
+<p><img src="after git cloning.png" alt="Spawning Screenshot" /></p>
+
+<!-- Terminal Shortcuts Section -->
+<div class="section-card">
+  <h1>⚡ TERMINAL CONTROL SHORTCUTS</h1>
+  <p style="text-align:center; font-size:17px;">
+    Master these essential terminal shortcuts to navigate, interrupt, and manage processes efficiently while working with <strong>NxtBot</strong>.
+  </p>
+  <table>
+    <thead>
+      <tr><th>Shortcut</th><th>Description</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><code>Ctrl + C</code></td><td>Terminates the currently running process (e.g., stop a node or simulation).</td></tr>
+      <tr><td><code>Ctrl + Shift + C</code></td><td>Copies selected text or commands from the terminal.</td></tr>
+      <tr><td><code>Ctrl + Shift + V</code></td><td>Pastes copied text or commands into the terminal.</td></tr>
+      <tr><td><code>Ctrl + L / clear</code></td><td>Clears the terminal screen for better visibility.</td></tr>
+      <tr><td><code>↑ / ↓</code></td><td>Scrolls through command history to quickly re-run previous commands.</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- Linux + ROS 2 Essentials -->
+<div class="section-card">
+  <h1>🧠 Command Lab — Linux + ROS 2 Essentials</h1>
+  <p style="text-align:center; font-size:17px;">
+    Your toolkit of <strong>Linux</strong> and <strong>ROS 2</strong> commands — essential for workspace setup, building packages, and launching NxtBot simulations.
+  </p>
+  <table>
+    <thead>
+      <tr><th>Command</th><th>Description</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><code>cd</code></td><td>Changes the current working directory.</td></tr>
+      <tr><td><code>mkdir</code></td><td>Creates a new directory within the current folder.</td></tr>
+      <tr><td><code>ls</code></td><td>Lists all files and directories in the current path.</td></tr>
+      <tr><td><code>source /opt/ros/humble/setup.bash</code></td><td>Loads ROS 2 environment variables before executing any command.</td></tr>
+      <tr><td><code>source install/setup.bash</code></td><td>Activates the local workspace after a successful build.</td></tr>
+      <tr><td><code>colcon build --symlink-install</code></td><td>Builds all ROS 2 packages in the workspace.</td></tr>
+      <tr><td><code>ros2 launch &lt;package name&gt; &lt;file.launch.py&gt;</code></td><td>Launches a predefined simulation or bring-up configuration.</td></tr>
+      <tr><td><code>ros2 run &lt;package name&gt; &lt;node name&gt;</code></td><td>Runs a specific ROS 2 node from a package.</td></tr>
+    </tbody>
+  </table>
+</div>
+<!-- ===================== CHUNK 2 (Enhanced Dark Visuals) ===================== -->
+
+<h2 style="font-size:22px; font-weight:800; margin:0.5em 0; color:#58a6ff;"> 
+Step 2: Build the workspace and Start the Simulation
+</h2>
+
+<p>Use the following command to build the simulation_ws:</p>
+
+<h3 style="font-size:20px; font-weight:700; margin:0.5em 0; color:#79c0ff;">Execute in Terminal</h3>
+
+<pre style="background:#161b22; padding:1em; border-radius:10px; color:#fff; font-size:15px; box-shadow:0 0 12px rgba(0,0,0,0.35);"><code>cd ~/simulation_ws
+colcon build --symlink-install</code><button class="copy-btn">Copy</button></pre>
+
+<p align="center">
+  <img src="colcon build.png" alt="Spawning Screenshot"
+       style="width:75%; border-radius:10px; box-shadow:0 4px 14px rgba(0,0,0,0.35);" />
+</p>
+
+<p align="center" style="font-size:18px; color:#9aa0a6;">You may see this <strong>colcon build</strong> output.</p>
+
+<p>
+Before sourcing the workspace and launching the simulation, open the Gazebo client.  
+Now source the <strong>simulation_ws</strong> and launch <code>simulation.launch.py</code>:
+</p>
+
+<p align="center">
+  <img src="click on the gazebo.png" alt="gazebo screenshot"
+       style="width:75%; border-radius:10px; box-shadow:0 4px 14px rgba(0,0,0,0.35);" />
+</p>
+
+<pre style="background:#161b22; padding:1em; border-radius:10px; color:#fff; font-size:15px;"><code>source install/setup.bash
+ros2 launch tortoise_bot simulation.launch.py</code><button class="copy-btn">Copy</button></pre>
+
+<p>
+This command initializes the warehouse environment, allowing the robot to operate within a simulated space.  
+It will take about 2–3 minutes to launch the Gazebo world.
+</p>
+
+<!-- Pro Tip -->
+<div style="background:linear-gradient(135deg,#1e3a8a,#1d4ed8); border-left:8px solid #58a6ff; padding:18px 24px; border-radius:12px; margin:1.5em 0; color:#dbeafe; box-shadow:0 4px 16px rgba(0,0,0,0.35);">
+  <strong style="font-size:17px; display:block; margin-bottom:8px;">🧠 Pro Tip</strong>
+  <p style="font-size:16px;">Always run <code>source /opt/ros/humble/setup.bash</code> before executing any ROS 2 command, and <code>source install/setup.bash</code> after every successful build to activate your workspace properly.</p>
+</div>
+
+<p align="center">
+  <img src="gazebo and terminal.png" alt="Spawning Screenshot"
+       style="width:80%; border-radius:10px; box-shadow:0 4px 14px rgba(0,0,0,0.35);" />
+</p>
+
+<p>
+open the gazebo window in the new tab
+</p>
+<p align="center">
+  <img src="open in the new tab.png" alt="Spawning Screenshot"
+       style="width:80%; border-radius:10px; box-shadow:0 4px 14px rgba(0,0,0,0.35);" />
+</p>
+
+
+<p align="center">
+  <img src="https://s3.ap-south-1.amazonaws.com/new-assets.ccbp.in/frontend/loading-data/niat_react_js/niat_coding_questions/Screenshot%20from%202025-11-04%2011-20-02.png" alt="Spawning Screenshot"
+       style="width:80%; border-radius:10px; box-shadow:0 4px 14px rgba(0,0,0,0.35);" />
+</p>
+
+<!-- ===========================
+   🛰️ Gazebo Camera Controls Section
+=========================== -->
+<hr style="border:none; border-top:1px solid #30363d; margin:1.5em 0;" />
+
+<h1 style="font-size:36px; font-weight:900; text-align:center; color:#58a6ff; margin:0.6em 0;">
+🛰️ Controlling the Camera in Gazebo: Pan, Tilt & Zoom
+</h1>
+
+<p style="font-size:17px; line-height:1.8; color:#e6edf3;">
+In Gazebo, you can control the simulation view using the mouse and keyboard shortcuts. 
+These camera controls help you analyze your robot’s movements from different angles and perspectives.
+</p>
+
+<h2 style="font-size:24px; color:#79c0ff;">🎮 Basic Camera Controls</h2>
+
+<table style="width:100%; border-collapse:collapse; margin:1em 0; font-size:16px; text-align:center; border:1px solid #30363d; border-radius:10px; overflow:hidden;">
+  <thead style="background-color:#161b22; color:#58a6ff;">
+    <tr>
+      <th style="padding:10px;">Action</th>
+      <th style="padding:10px;">Mouse / Key</th>
+      <th style="padding:10px;">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr style="background-color:#0d1117;">
+      <td style="padding:10px;">Pan (Move view left/right/up/down)</td>
+      <td style="padding:10px;">Middle Mouse Button (drag)</td>
+      <td style="padding:10px;">Moves the camera parallel to the ground plane.</td>
+    </tr>
+    <tr style="background-color:#161b22;">
+      <td style="padding:10px;">Tilt (Rotate around focus)</td>
+      <td style="padding:10px;">Right Mouse Button (drag)</td>
+      <td style="padding:10px;">Rotates the camera around the current focus point.</td>
+    </tr>
+    <tr style="background-color:#0d1117;">
+      <td style="padding:10px;">Zoom</td>
+      <td style="padding:10px;">Scroll Wheel / Ctrl + Right Click</td>
+      <td style="padding:10px;">Zooms in or out to get closer or farther from the robot.</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr style="border:none; border-top:1px solid #30363d; margin:1em 0;" />
+
+<h2 style="font-size:24px; color:#79c0ff;">📸 Choose Your Camera View</h2>
+
+<p style="font-size:17px; color:#e6edf3; line-height:1.8;">
+Gazebo allows you to switch between different visual perspectives to analyze your robot’s surroundings more effectively:
+</p>
+
+<ul style="color:#e6edf3; line-height:1.8; margin-left:1.5em;">
+  <li><strong>Top View</strong> — Ideal for observing navigation paths and obstacle avoidance.</li>
+  <li><strong>Perspective View</strong> — Natural, human-like view with depth.</li>
+  <li><strong>Orthographic View</strong> — Flat projection useful for design alignment and map layouts.</li>
+</ul>
+
+<div style="background:#161b22; border:1px solid #30363d; border-radius:10px; padding:15px; margin:1.5em 0;">
+  <h3 style="color:#58a6ff; font-size:20px; text-align:center;">🖼️ Camera View Example</h3>
+  <p style="color:#e6edf3; text-align:center; font-size:16px;">
+    Below is where show sample camera views (Top, Perspective, Orthographic).
+  </p>
+  
+  <!-- Placeholder for Image -->
+  <div style="text-align:center; margin-top:15px;">
+    <img src="gazebo keep the top view.png" alt="Gazebo Camera Views" 
+         style="max-width:90%; border-radius:10px; box-shadow:0 4px 20px rgba(0,0,0,0.4);" />
+  </div>
+</div>
+
+<div style="background-color:#E3F2FD22; border-left:8px solid #00bcd4; padding:18px; border-radius:10px; color:#e6edf3; margin:1.5em 0;">
+  <h3 style="font-size:18px; margin:0 0 6px 0; color:#58a6ff;">💡 Pro Tip</h3>
+  <p style="font-size:16px; margin:0;">
+    While running simulations, use the Top View to easily monitor your robot’s movement trajectory, 
+    wheel alignment, and sensor field overlaps.
+  </p>
+</div>
+
+<hr style="border:none; border-top:1px solid #30363d; margin:1.5em 0;" />
+
+
+
+
+
+<!-- Warning Notice -->
+<div style="background:linear-gradient(135deg,#7f1d1d,#991b1b); border-left:8px solid #ef4444; padding:20px 26px; border-radius:12px; margin:1.5em 0; color:#fee2e2; box-shadow:0 4px 18px rgba(0,0,0,0.3);">
+  <strong style="font-size:17px; display:block; margin-bottom:10px;">⚠️ Important Notice</strong>
+  <p>The Gazebo simulation might not start properly on the first try or if the gazebo closes suddenly. If this happens, restart the simulation by following these steps:</p>
+  <ol>
+    <li>Stop the current simulation by pressing <code>Ctrl + C</code> in the terminal where you launched it.</li>
+    <li>Then relaunch the simulation with:
+      <pre style="background:#161b22; padding:1em; border-radius:8px; margin-top:8px;"><code>cd ~/simulation_ws
+source install/setup.bash
+ros2 launch tortoise_bot simulation.launch.py</code><button class="copy-btn">Copy</button></pre>
+    </li>
+  </ol>
+  <h4 style="font-size:18px; font-weight:700;">💡 Tip:</h4>
+  <p>If the Gazebo window closes unexpectedly, just reopen it and re-run the same commands above to resume your simulation.</p>
+</div>
+
+<h1 align="center" style="color:#58a6ff;"><strong>Exploring the Environment with Teleoperation</strong></h1>
+<p>
+Before diving into automation and sensor-based navigation, it’s essential to familiarize yourself with manual control.  
+<strong>Teleoperation</strong> allows you to manually control the robot using keyboard inputs, providing a hands-on understanding of its movement capabilities.
+</p>
+
+<!-- ========================= -->
+<!-- ⚙️ Understanding /cmd_vel — Linear & Angular Velocities -->
+<!-- ========================= -->
+<div style="
+  background:linear-gradient(145deg,#10141b 0%,#161b22 100%);
+  color:#e0f7fa;
+  border-left:6px solid #00bcd4;
+  padding:30px 40px;
+  border-radius:14px;
+  margin:2em auto;
+  max-width:850px;
+  box-shadow:0 4px 20px rgba(0,0,0,0.25);
+  font-family:'Segoe UI',sans-serif;
+">
+  <h1 style="text-align:center; font-size:32px; font-weight:800; color:#4dd0e1; margin-bottom:15px;">
+    Understanding <code>/cmd_vel</code> — Linear & Angular Velocities
+  </h1>
+
+  <p style="font-size:17px; line-height:1.8; color:#e0f2f1;">
+    In ROS 2, the topic <strong><code>/cmd_vel</code></strong> (short for <em>command velocity</em>)
+    is the standard channel used to control a robot’s movement. It carries messages of type
+    <strong><code>geometry_msgs/Twist</code></strong>.
+  </p>
+
+  <p style="font-size:17px; line-height:1.8; color:#b2ebf2;">
+    This message defines how fast the robot moves forward/backward and how quickly it turns.
+  </p>
+
+  <h2 style="color:#80deea; font-weight:700; margin-top:20px;">🧭 The <code>Twist</code> Message Structure</h2>
+  <pre style="
+      background:#0b0f14; 
+      color:#cfd8dc; 
+      padding:14px; 
+      border-radius:10px; 
+      font-size:15px; 
+      border:1px solid #263238;
+      overflow:auto;
+    ">
+<code>geometry_msgs/msg/Twist:
+  linear:
+    x: 0.0   # forward/backward
+    y: 0.0   # (used for strafing — mostly for drones or holonomic bots)
+    z: 0.0
+  angular:
+    x: 0.0
+    y: 0.0
+    z: 0.0   # rotation about the vertical axis (yaw)
+</code></pre>
+
+  <h2 style="color:#80deea; font-weight:700;">⚙️ How It Works</h2>
+  <ul style="line-height:1.8; font-size:16px; color:#e0f7fa;">
+    <li><strong>linear.x</strong> — Controls forward (+) or backward (−) movement.</li>
+    <li><strong>angular.z</strong> — Controls rotation (yaw). Positive = left turn, Negative = right turn.</li>
+    <li>Both values are measured in <code>m/s</code> (meters per second) and <code>rad/s</code> (radians per second).</li>
+  </ul>
+
+  <p style="font-size:16px; color:#b2ebf2;">
+    These two together define a <strong>twist motion</strong>, i.e., translation + rotation — the essence of differential drive control.
+  </p>
+</div>
+
+<h2 id="to-enable-teleoperation" style="color:#79c0ff;"><strong>To Enable Teleoperation</strong></h2>
+
+<ul>
+  <li>
+    <strong>Open Another Terminal:</strong><br>Launch a new terminal window from the top right-hand side.
+    <p align="center"><img src="add the new terminal.png" alt="Spawning Screenshot"
+       style="width:70%; border-radius:10px; box-shadow:0 4px 14px rgba(0,0,0,0.35);" /></p>
+  </li>
+  <li>
+    <strong>Execute the Teleoperation Command:</strong>
+    <pre style="background:#161b22; padding:1em; border-radius:10px; color:#fff; font-size:15px;"><code>source /opt/ros/humble/setup.bash
+export TURTLEBOT3_MODEL=burger
+ros2 run turtlebot3_teleop teleop_keyboard</code><button class="copy-btn">Copy</button></pre>
+  </li>
+  <li><strong>Controlling the Robot Using Keyboard Teleoperation</strong></li>
+</ul>
+
+<p>
+After successfully launching the teleoperation node, use the keys below to navigate the robot inside the warehouse simulation environment:
+</p>
+
+<div style="background:linear-gradient(135deg,#1e3a8a,#1d4ed8); border-radius:12px; padding:20px; text-align:center; color:#dbeafe; box-shadow:0 3px 14px rgba(0,0,0,0.35); width:70%; margin:auto;">
+  <p style="font-size:17px; margin:0; line-height:1.6;">
+    <span style="display:block; font-weight:700;">Moving Around:</span>
+  </p>
+  <pre style="font-family:'Consolas','Courier New',monospace; font-size:17px; color:#fff; margin:10px 0;">        W → Move Forward
+   A → Turn Left     D → Turn Right
+        X → Move Backward</pre>
+  <p style="font-size:16px;">
+    <code>Space</code> or <code>S</code> → Force Stop<br>
+    <code>Ctrl + C</code> → Quit Teleoperation
+  </p>
+</div>
+
+<!-- Pro Tip -->
+<div style="background:linear-gradient(135deg,#1e3a8a,#1d4ed8); border-left:8px solid #58a6ff; padding:18px 24px; border-radius:12px; margin:1.5em 0; color:#dbeafe; box-shadow:0 4px 16px rgba(0,0,0,0.35);">
+  <h3 style="font-size:18px; margin:0 0 6px 0;">💡 Pro Tip</h3>
+  <p>Use gentle, short key presses to control the robot’s movement smoothly. Avoid holding keys for too long, as this may cause overshooting or collisions in confined spaces.</p>
+</div>
+
+<!-- Safety Warning -->
+<div style="background:linear-gradient(135deg,#7f1d1d,#991b1b); border-left:8px solid #ef4444; padding:20px 26px; border-radius:12px; margin:1.5em 0; box-shadow:0 4px 18px rgba(0,0,0,0.3); color:#fee2e2;">
+  <h3 style="font-size:20px; margin:0 0 6px 0;">⚠️ Safety Warning — If the Robot Crashes</h3>
+  <p>If the robot collides with walls, gets stuck, or behaves erratically:</p>
+  <ul style="margin-left:20px;">
+    <li>Press <code>Ctrl + C</code> immediately to stop the <code>teleop_keyboard</code> node in the terminal window.</li>
+    <li>Click once inside the <strong>Gazebo window</strong>.</li>
+    <li>Press <code>Ctrl + R</code> to reset the robot’s position and environment or If ctrl +R is not working click on edit on the top menu bar and click on reset world .</li>
+  </ul>
+    <img src="reset the world.png" alt="Gazebo Camera Views" 
+         style="max-width:90%; border-radius:10px; box-shadow:0 4px 20px rgba(0,0,0,0.4);" />
+  <p>This will safely reset the simulation and prepare the robot for another teleoperation attempt.</p>
+</div>
+
+<!-- ===================== CHUNK 4 (Enhanced Dark Visuals) ===================== -->
+
+<center>
+  <h1 style="font-size:48px; font-weight:900; text-align:center; margin:0.6em 0; background:#161b22; padding:18px; border-radius:14px; color:#58a6ff; box-shadow:0 4px 25px rgba(0,0,0,0.4);">
+    How Robots Perceive the World: A Comprehensive Guide to Robotics Perception
+  </h1>
+</center>
+
+<hr style="border:none; border-top:1px solid #30363d;" />
+
+<h2 id="objectives-for-the-class" style="color:#79c0ff;"><strong>Objectives for the Class</strong></h2>
+<p>By the end of this class, you will be able to:</p>
+<ul>
+  <li>Understand the foundational concepts of robotics perception.</li>
+  <li>Utilize ROS2 with the NxtBot robot to perform perception tasks.</li>
+  <li>Develop programming skills for practical applications of sensors.</li>
+  <li>Design and implement challenges to reinforce learning.</li>
+</ul>
+
+<hr style="border:none; border-top:1px solid #30363d;" />
+
+<h2 id="using-ros2-with-the-nxtbot-robot-for-perception-tasks" style="color:#79c0ff;"><strong>Using ROS2 with the NxtBot Robot for Perception Tasks</strong></h2>
+<hr />
+
+<h2 id="setting-up-the-simulation-environment" style="color:#58a6ff;"><strong>Setting Up the Simulation Environment</strong></h2>
+<p>Before diving into perception tasks, we need to set up our <strong>ROS2 environment</strong> and the <strong>NxtBot simulation</strong>.</p>
+
+<hr style="border:none; border-top:1px solid #30363d;" />
+
+<h3 id="launch-the-nxtbot-simulation" style="color:#79c0ff;"><strong>Launch the NxtBot Simulation</strong></h3>
+<p>
+Before launching the NxtBot simulation again. Press <code>Ctrl + C</code> in the Teleoperation terminal where it is running to safely terminate the process and run the next simulation.<br><br>
+Next,Press <code>Ctrl + R</code> to reset the robot’s position and environment or If ctrl +R is not working click on edit on the top menu bar and click on reset world .</li>
+  </ul>
+    <img src="reset the world.png" alt="Gazebo Camera Views" 
+         style="max-width:90%; border-radius:10px; box-shadow:0 4px 20px rgba(0,0,0,0.4);" />  Once reset, proceed to the next step to launch the NxtBot simulation.
+</p>
+
+<h3 id="spawn-image" style="color:#79c0ff;"><strong>Now our robot is ready to do next simulation, it should look like the following spawn image.</strong></h3>
+<figure style="text-align:center;">
+  <img src="https://s3.ap-south-1.amazonaws.com/new-assets.ccbp.in/frontend/loading-data/niat_react_js/niat_coding_questions/Screenshot%20from%202025-11-04%2011-20-02.png"
+       alt="NxtBot Simulation"
+       style="max-width:90%; border-radius:12px; box-shadow:0 4px 20px rgba(0,0,0,0.4); transition:transform .3s ease;" />
+  <figcaption style="color:#8b949e; margin-top:8px;">NxtBot Simulation</figcaption>
+</figure>
+
+<hr style="border:none; border-top:1px solid #30363d;" />
+
+<h1 id="visualizing-in-rviz2" style="color:#58a6ff;">Visualizing in RVIZ2</h1>
+<p><strong>RViz2</strong> is a powerful visualization tool in ROS2 that allows us to see the data being published by the robot’s sensors.</p>
+<p>Now open another terminal and execute the following command:</p>
+
+<pre style="background:#161b22; padding:1em; border-radius:12px; color:#fff;"><code>
+  cd ~/simulation_ws
+  source install/setup.bash
+  rviz2</code><button class="copy-btn">Copy</button></pre>
+
+<hr style="border:none; border-top:1px solid #30363d;" />
+
+<h2 id="visualizing-and-interpreting-sensor-data" style="color:#79c0ff;">🚀 Visualizing and Interpreting Sensor Data</h2>
+<p>
+Let’s bring your robot to life in <strong>RViz2</strong>! You’ll learn how to visualize:
+</p>
+<ul>
+  <li>Robot model (<code>/robot_description</code>)</li>
+  <li>Camera feed (<code>/camera/image_raw</code>)</li>
+  <li>Laser scan (<code>/scan</code>)</li>
+</ul>
+
+<h2 id="steps-to-configure-rviz2" style="color:#79c0ff;">🧭 Steps to Configure RViz2</h2>
+<p>Follow these steps to set up and visualize your robot in <strong>RViz2</strong>.</p>
+
+<hr style="border:none; border-top:1px solid #30363d;" />
+
+<h3 id="step-1-open-rviz2" style="color:#58a6ff;">🪄 <strong>Step 1 – Open RViz2</strong></h3>
+<p>After launching <strong>RViz2</strong> in the terminal, the interface will look like this:</p>
+<p align="center">
+  <img src="https://s3.ap-south-1.amazonaws.com/new-assets.ccbp.in/frontend/loading-data/niat_static/niat_coding_questionsrviz_open.png" 
+       alt="RViz2 Initial View" 
+       style="max-width:90%; border-radius:10px; box-shadow:0 4px 20px rgba(0,0,0,0.4);" />
+</p>
+
+<hr />
+
+<h3 id="step-2-select-fixed-frame-as-base_link" style="color:#79c0ff;">⚙️ <strong>Step 2 – Select Fixed Frame as base_link</strong></h3>
+<p>Select <strong>base_link</strong> as the fixed frame.</p>
+<p align="center">
+  <img src="https://s3.ap-south-1.amazonaws.com/new-assets.ccbp.in/frontend/loading-data/niat_static/niat_coding_questionsbase_link.png" 
+       alt="Select Odom Frame" 
+       style="max-width:90%; border-radius:10px; box-shadow:0 4px 20px rgba(0,0,0,0.4);" />
+</p>
+
+<hr />
+
+<h3 id="step-3-add-a-topic" style="color:#58a6ff;">➕ <strong>Step 3 – Add a Topic</strong></h3>
+<p>Click on the <strong>Add</strong> button in the bottom-left corner to include a new topic.</p>
+<p align="center">
+  <img src="https://s3.ap-south-1.amazonaws.com/new-assets.ccbp.in/frontend/loading-data/niat_static/niat_coding_questionsadd_1.png"
+       alt="Add Topic in RViz2"
+       style="max-width:90%; border-radius:10px; box-shadow:0 4px 20px rgba(0,0,0,0.4);" />
+</p>
+
+<hr />
+
+<h3 id="step-4-spawn-the-robot-model" style="color:#79c0ff;">🤖 <strong>Step 4 – Spawn the Robot Model</strong></h3>
+<p>
+Add the <strong>RobotModel</strong> from <strong>By Display Type</strong> and click <strong>OK</strong>.
+</p>
+<p align="center">
+  <img src="https://s3.ap-south-1.amazonaws.com/new-assets.ccbp.in/frontend/loading-data/niat_static/niat_coding_questionsrobot_model.png"
+       alt="Add Robot Model in RViz2"
+       style="max-width:90%; border-radius:10px; box-shadow:0 4px 20px rgba(0,0,0,0.4);" />
+</p>
+<p>
+Expand <strong>RobotModel</strong> and select the <code>/robot_description</code> topic to see your robot.
+</p>
+<p align="center">
+  <img src="https://s3.ap-south-1.amazonaws.com/new-assets.ccbp.in/frontend/loading-data/niat_static/niat_coding_questionsrobot_description.jpg"
+       alt="Add Robot Model in RViz2"
+       style="max-width:90%; border-radius:10px; box-shadow:0 4px 20px rgba(0,0,0,0.4);" />
+</p>
+
+<hr />
+
+<p>🌐 <strong>Step 5 – Add the Laser Scan Topic</strong></p>
+<ul>
+  <li><strong>Click on ‘Add’</strong> at the bottom left corner.</li>
+  <li><strong>Select Laser Scan</strong> and set the topic to <code>/scan</code>.</li>
+</ul>
+<p align="center">
+  <img src="https://s3.ap-south-1.amazonaws.com/new-assets.ccbp.in/frontend/loading-data/niat_react_js/niat_coding_questions/Click%20on%20topic%20and%20click%20on%20scan.jpg"
+       alt="Add Laser Scan Topic in RViz2"
+       style="max-width:90%; border-radius:10px; box-shadow:0 4px 20px rgba(0,0,0,0.4); transition:transform .3s ease-in-out;" />
+</p>
+
+<hr />
+
+<h3 id="step-6-add-the-image-topic" style="color:#79c0ff;">🖼️ <strong>Step 6 – Add the Image Topic</strong></h3>
+<p>Add the <strong>Image</strong> topic and set it to <code>/camera/image_raw</code> to see what your robot sees.</p>
+<p align="center">
+  <img src="https://s3.ap-south-1.amazonaws.com/new-assets.ccbp.in/frontend/loading-data/niat_react_js/niat_coding_questions/Click%20on%20image%20topic%20and%20add%20it%20.%20Click%20on%20topic%20and%20change%20it%20camera%20image%20raw.jpg"
+       alt="Add Image Topic in RViz2"
+       style="max-width:90%; border-radius:10px; box-shadow:0 4px 20px rgba(0,0,0,0.4);" />
+</p>
+
+<p>✅ Once all topics are added, your <strong>RViz2</strong> setup should display the robot model, camera feed, and laser scan data seamlessly.</p>
+
+<p align="center">
+  <img src="https://s3.ap-south-1.amazonaws.com/new-assets.ccbp.in/frontend/loading-data/niat_react_js/niat_coding_questions/rviz2.png"
+       alt="RViz2 Final View"
+       style="max-width:90%; border-radius:10px; box-shadow:0 4px 20px rgba(0,0,0,0.4);" />
+</p>
+
+<hr style="border:none; border-top:1px solid #30363d;" />
+
+<h2 style="color:#58a6ff;"><strong>Final Step</strong></h2>
+<p>
+Launch a new terminal window (top right corner of the terminal panel).
+</p>
+
+<p><strong>Teleoperation Command:</strong><br>
+Execute in Terminal:</p>
+
+<pre style="background:#161b22; padding:1em; border-radius:12px; color:#fff;"><code>source /opt/ros/humble/setup.bash
+export TURTLEBOT3_MODEL=burger
+ros2 run turtlebot3_teleop teleop_keyboard</code><button class="copy-btn">Copy</button></pre>
+
+<p><strong>Now start controlling the robot using Teleoperation Keyboard and observe what your robot sees in RViz2 through the Camera feed and Laser scan topics.</strong></p>
+
+<hr style="border:none; border-top:1px solid #30363d; margin:2em 0;" />
+
+
+
+
+
+
+<hr style="border:none; border-top:1px solid #30363d; margin:1.5em 0;" />
+
+<h1 align="center" style="color:#58a6ff;"><strong>Practical Coding: Obstacle Avoidance with Lasers</strong></h1>
+<hr />
+
+<h2 style="color:#79c0ff;"><strong>Setting Up the Environment</strong></h2>
+<p>Before we start coding, ensure that you have the <strong>NxtBot simulation environment</strong> set up and running. You should have access to the following ROS 2 topics:</p>
+<ul>
+  <li><strong>/scan:</strong> Provides laser scan data (<code>sensor_msgs/LaserScan</code>) which indicates distances to obstacles around the robot.</li>
+  <li><strong>/cmd_vel:</strong> Allows us to publish movement commands (<code>geometry_msgs/Twist</code>) to control the robot’s velocity.</li>
+</ul>
+
+Next,Press <code>Ctrl + R</code> to reset the robot’s position and environment or If ctrl +R is not working click on edit on the top menu bar and click on reset world .</li>
+  </ul>
+    <img src="reset the world.png" alt="Gazebo Camera Views" 
+         style="max-width:90%; border-radius:10px; box-shadow:0 4px 20px rgba(0,0,0,0.4);" />  Once reset, proceed to the next step to launch the NxtBot simulation.
+</p>
+
+
+<hr />
+<h2 style="color:#79c0ff;"><strong>Step-by-Step Guide to Implementing Obstacle Avoidance</strong></h2>
+<p>First, we will create a ros2_ws. Run this command in the terminal:</p>
+
+<pre style="background:#161b22; padding:1em; border-radius:10px; color:#fff;"><code>cd 
+mkdir -p niat_ws/src</code><button class="copy-btn">Copy</button></pre>
+
+<p align="center"><img src="ros2ws.png" alt="Spawning Screenshot" style="width:75%; border-radius:10px; box-shadow:0 4px 14px rgba(0,0,0,0.35);" /></p>
+
+<h3 style="color:#79c0ff;"><strong>Step 1: Create a New ROS 2 Package</strong></h3>
+<pre style="background:#161b22; padding:1em; border-radius:10px; color:#fff;"><code>cd niat_ws/src
+ros2 pkg create --build-type ament_python obstacle_avoidance</code><button class="copy-btn">Copy</button></pre>
+
+<p align="center"><img src="packaage succesful.png" alt="Package Creation Screenshot" style="width:75%; border-radius:10px; box-shadow:0 4px 14px rgba(0,0,0,0.35);" /></p>
+
+<p>To verify, run <code>ls</code> and ensure the package appears:</p>
+<p align="center"><img src="package veriication.png" alt="Package Verification Screenshot" style="width:75%; border-radius:10px; box-shadow:0 4px 14px rgba(0,0,0,0.35);" /></p>
+<hr />
+
+<!-- ===================== RESTORED SECTION (Enhanced Dark Visuals) ===================== -->
+
+<hr style="border:none; border-top:1px solid #30363d; margin:1em 0;" />
+
+<h3 id="create-laser_obstacle_avoidance.py-in-the-new-package" style="color:#58a6ff;">
+  <strong>Create <code>laser_obstacle_avoidance.py</code> in the New Package</strong>
+</h3>
+
+<p>Navigate to the <code>obstacle_avoidance</code> package directory:</p>
+
+<pre style="background:#161b22; padding:1em; border-radius:12px; color:#fff;"><code>cd obstacle_avoidance/obstacle_avoidance/</code><button class="copy-btn">Copy</button></pre>
+
+<p>Inside this directory, create a Python script named <strong><code>laser_obstacle_avoidance.py</code></strong>:</p>
+
+<pre style="background:#161b22; padding:1em; border-radius:12px; color:#fff;"><code>touch laser_obstacle_avoidance.py</code><button class="copy-btn">Copy</button></pre>
+
+<p>After running the command, the Python file will be created at the following path:</p>
+
+<p align="center">
+  <img src="python file verifiacatio.png" alt="Python File Creation Screenshot"
+       style="max-width:90%; height:auto; border-radius:10px; box-shadow:0 4px 20px rgba(0,0,0,0.4);" />
+</p>
+
+<h3 style="font-size:20px; font-weight:700; color:#79c0ff;"># Step 2: Navigating to the Editor</h3>
+
+<p>Now that the <strong>laser_obstacle_avoidance.py</strong> file has been created, open it inside your
+<strong>Construct online IDE</strong> to begin writing the code.</p>
+
+<p style="margin-top:1em;">If you’re using the <strong>Construct IDE interface</strong>, follow these simple steps to open your Python file visually:</p>
+<h4 style="font: size 16px;px; font-weight:700; color:#58a6ff;"> Open the code editor . you can click on the bottom menu that has code editor.</h4>
+<p align="center">
+  <img src="code editor.png" alt="Open niat_ws Folder Screenshot"
+       style="max-width:90%; border-radius:10px; box-shadow:0 4px 18px rgba(0,0,0,0.4);" />
+</p>
+
+<hr style="border:none; border-top:1px solid #30363d; margin:1em 0;" />
+
+<h4 style="font-size:20px; font-weight:700; color:#58a6ff;">🔹 Step 1: Open the Niat_ws Folder</h4>
+<p>On the left-hand sidebar of the IDE, click on the <strong>niat_ws</strong> folder to expand your project structure.</p>
+<p align="center">
+  <img src="go to simulation_Ws code.png" alt="Open Niat_ws Folder Screenshot"
+       style="max-width:90%; border-radius:10px; box-shadow:0 4px 18px rgba(0,0,0,0.4);" />
+</p>
+
+<hr style="border:none; border-top:1px solid #30363d; margin:1em 0;" />
+
+<h4 style="font-size:20px; font-weight:700; color:#58a6ff;">🔹 Step 2: Navigate to the Python File</h4>
+<p>Next, go to the <strong>niat_ws → src → obstacle_avoidance → obstacle_avoidance</strong> directory and find the file <strong>laser_obstacle_avoidance.py</strong>.</p>
+<p align="center">
+  <img src="navigate to laser.png" alt="Navigate to Python File Screenshot"
+       style="max-width:90%; border-radius:10px; box-shadow:0 4px 18px rgba(0,0,0,0.4);" />
+</p>
+
+<hr style="border:none; border-top:1px solid #30363d; margin:1em 0;" />
+
+<h4 style="font-size:20px; font-weight:700; color:#58a6ff;">🔹 Step 3: Open the File in the Editor</h4>
+<p>Click on the <strong>laser_obstacle_avoidance.py</strong> file to open it in the code editor panel on the right side. You are now ready to begin writing your obstacle avoidance program!</p>
+<p align="center">
+  <img src="clickon laser.png" alt="Open File in Editor Screenshot"
+       style="max-width:90%; border-radius:10px; box-shadow:0 4px 18px rgba(0,0,0,0.4);" />
+</p>
+
+<hr style="border:none; border-top:1px solid #30363d; margin:1em 0;" />
+
+<p>💡 <strong>Alternative method:</strong> You can also use the built-in editor or open the file manually using a command-line text editor like <strong>nano</strong>:</p>
+
+<h3 style="font-size:20px; font-weight:700; color:#79c0ff;">Execute in Terminal</h3>
+
+<pre style="background:#161b22; padding:1em; border-radius:12px; color:#fff;"><code>nano laser_obstacle_avoidance.py</code><button class="copy-btn">Copy</button></pre>
+
+<hr style="border:none; border-top:1px solid #30363d; margin:1em 0;" />
+
+<h1 id="step-3-reading-laser-scan-data" style="color:#58a6ff;">
+  <strong>Step 3: Reading Laser Scan Data</strong>
+</h1>
+
+<p>The first step in our obstacle avoidance algorithm is to read data from the <strong>/scan</strong> topic. This provides an array of distance measurements from the laser sensor, indicating how far obstacles are from the robot in various directions.</p>
+
+<p align="center">
+  <img src="https://s3.ap-south-1.amazonaws.com/new-assets.ccbp.in/frontend/loading-data/niat_react_js/niat_coding_questions/code%201.png"
+       alt="Spawning Screenshot"
+       style="max-width:90%; height:auto; border-radius:10px; box-shadow:0 4px 20px rgba(0,0,0,0.4);" />
+</p>
+
+<h1 id="step-4-implementing-the-obstacle-avoidance-logic" style="color:#79c0ff;">
+  <strong>Step 4: Implementing the Obstacle Avoidance Logic</strong>
+</h1>
+
+<p>Once we have the laser scan data, the next step is to implement the logic to detect and avoid obstacles.<br>
+The strategy here is to check for close obstacles within a certain threshold distance and adjust the robot’s direction accordingly to avoid collisions.</p>
+
+<p align="center">
+  <img src="https://s3.ap-south-1.amazonaws.com/new-assets.ccbp.in/frontend/loading-data/niat_react_js/niat_coding_questions/code%202.png"
+       alt="Obstacle Avoidance Code Screenshot"
+       style="max-width:90%; height:auto; border-radius:10px; box-shadow:0 4px 20px rgba(0,0,0,0.4);" />
+</p>
+
+<hr style="border:none; border-top:1px solid #30363d; margin:1em 0;" />
+
+<!-- ===================== CHUNK 3 (Enhanced Dark Visuals) ===================== -->
+
+<h1 id="step-5-complete-program" style="color:#58a6ff;"><strong>Step 5: Complete Program</strong></h1>
+<p>The final program should look like this:<br><strong>laser_obstacle_avoidance.py</strong></p>
+
+<pre style="background:#161b22; padding:1em; border-radius:12px; color:#fff; font-size:15px; box-shadow:0 0 15px rgba(0,0,0,0.4);"><code>import rclpy
+from rclpy.node import Node
+from sensor_msgs.msg import LaserScan
+from geometry_msgs.msg import Twist
+
+class ObstacleAvoidance(Node):
+
+    def __init__(self):
+        super().__init__('obstacle_avoidance_node')
+        self.subscription = self.create_subscription(
+            LaserScan,
+            '/scan',
+            self.scan_callback,
+            10)
+        self.subscription  # prevent unused variable warning
+        self.publisher = self.create_publisher(Twist, '/cmd_vel', 10)
+
+    def scan_callback(self, msg):
+        # Extract distance measurements from the laser scan data
+        ranges = msg.ranges
+        front_distance = min(min(ranges[0:10]), min(ranges[-10:]))  # Front section of the laser data
+        threshold_distance = 0.5  # Set a threshold distance to detect obstacles
+
+        twist = Twist()
+      
+        if front_distance < threshold_distance:
+            # Obstacle detected in front, turn
+            twist.angular.z = 0.5  # Turn rate
+        else:
+            # No obstacle, move forward
+            twist.linear.x = 0.2  # Forward speed
+      
+        self.publisher.publish(twist)
+
+def main(args=None):
+    rclpy.init(args=args)  # Initialize the ROS 2 Python client library
+  
+    # Create an instance of the ObstacleAvoidance node
+    obstacle_avoidance_node = ObstacleAvoidance()
+  
+    # Keep the node running and processing callbacks
+    rclpy.spin(obstacle_avoidance_node)
+  
+    # Shutdown the node and ROS 2 properly
+    obstacle_avoidance_node.destroy_node()
+    rclpy.shutdown()
+
+if __name__ == '__main__':
+    main()</code><button class="copy-btn">Copy</button></pre>
+
+<hr style="border:none; border-top:1px solid #30363d; margin:1.5em 0;" />
+
+<h1 id="update-setup.py" style="color:#79c0ff;"><strong>Update setup.py</strong></h1>
+<p>Update the <strong>setup.py</strong> file to generate the executable node:</p>
+
+<hr style="border:none; border-top:1px solid #30363d; margin:1em 0;" />
+<h4 style="font: size 16px;px; font-weight:700; color:#58a6ff;"> Open the code editor . you can click on the bottom menu that has code editor.</h4>
+<p align="center">
+  <img src="code editor.png" alt="Open niat_ws Folder Screenshot"
+       style="max-width:90%; border-radius:10px; box-shadow:0 4px 18px rgba(0,0,0,0.4);" />
+</p>
+
+<hr style="border:none; border-top:1px solid #30363d; margin:1em 0;" />
+
+<h4 style="font-size:20px; font-weight:700; color:#58a6ff;">🔹 Step 1: Open the Niat_ws Folder</h4>
+<p>On the left-hand sidebar of the IDE, click on the <strong>niat_ws</strong> folder to expand your project structure.</p>
+<p align="center">
+  <img src="go to simulation_Ws code.png" alt="Open Niat_ws Folder Screenshot"
+       style="max-width:90%; border-radius:10px; box-shadow:0 4px 18px rgba(0,0,0,0.4);" />
+</p>
+<hr style="border:none; border-top:1px solid #30363d; margin:1em 0;" />
+
+<h4 style="font-size:20px; font-weight:700; color:#58a6ff;">🔹 Step 2: Navigate to the Python File</h4>
+<p>Next, go to the <strong>_ws → src → obstacle avoidance → obstacle avoidance</strong> directory and find the file <strong>setup.py</strong>.</p>
+<p align="center">
+  <img src="navigate to laser.png" alt="Navigate to Python File Screenshot" style="width:75%; border-radius:10px; box-shadow:0 4px 14px rgba(0,0,0,0.35);" />
+</p>
+
+<h4 style="font-size:20px; font-weight:700; color:#58a6ff;">🔹 Step 3: Open the File in the Editor</h4>
+<p>Click on the <strong>setup.py</strong> file to open it in the code editor panel.</p>
+<p align="center">
+  <img src="clickon setup.png" alt="Open File in Editor Screenshot" style="width:75%; border-radius:10px; box-shadow:0 4px 14px rgba(0,0,0,0.35);" />
+</p>
+
+<pre style="background:#161b22; padding:1em; border-radius:12px; color:#fff; font-size:15px;"><code>entry_points={
+    'console_scripts': [
+        'laser_obstacle_avoidance = obstacle_avoidance.laser_obstacle_avoidance:main'
+    ],
+},</code><button class="copy-btn">Copy</button></pre>
+
+<!-- Note Box -->
+<div style="background:linear-gradient(135deg,#7f1d1d,#991b1b); border-left:8px solid #ef4444; padding:16px 20px; border-radius:10px; color:#fee2e2; margin:1.5em 0; box-shadow:0 4px 18px rgba(0,0,0,0.3);">
+  <strong style="font-size:16px; display:block; margin-bottom:8px;">⚠️ Note:</strong>
+  <p style="font-size:15px;">Make sure to carefully type or correct the highlighted
+    <code style="color:#ff7b72;">‘laser_obstacle_avoidance = obstacle_avoidance.laser_obstacle_avoidance:main’</code>
+    part in your code.<br>A small spelling or indentation mistake here can cause a build or import error during package setup.
+  </p>
+</div>
+
+<p>Finally your <strong>setup.py</strong> will appear similar to this:</p>
+<p align="center">
+  <img src="console scripts.png" alt="Python File Creation Screenshot"
+       style="width:75%; border-radius:10px; box-shadow:0 4px 14px rgba(0,0,0,0.35);" />
+</p>
+
+<hr style="border:none; border-top:1px solid #30363d; margin:1em 0;" />
+
+<h1 id="build-the-package" style="color:#79c0ff;"><strong>Build the Package</strong></h1>
+<p>Execute in Terminal:</p>
+
+<pre style="background:#161b22; padding:1em; border-radius:12px; color:#fff; font-size:15px;"><code>cd ~/niat_ws
+colcon build --symlink-install
+source install/setup.bash</code><button class="copy-btn">Copy</button></pre>
+
+<hr style="border:none; border-top:1px solid #30363d; margin:1em 0;" />
+
+<h1 id="run-your-program" style="color:#79c0ff;"><strong>Run Your Program</strong></h1>
+<p>Execute in Terminal:</p>
+<pre style="background:#161b22; padding:1em; border-radius:12px; color:#fff; font-size:15px;"><code>ros2 run obstacle_avoidance laser_obstacle_avoidance</code><button class="copy-btn">Copy</button></pre>
+<p>After successfully executing all the commands, you will observe that the robot starts moving in the simulator and attempts to avoid obstacles.</p>
+
+<hr style="border:none; border-top:1px solid #30363d; margin:1em 0;" />
+
+<h1 id="step-6-testing-and-experimentation" style="color:#58a6ff;"><strong>Step 6: Testing and Experimentation</strong></h1>
+<p>Compile your code and run the node within the <strong>NxtBot simulation environment</strong>. Observe how the robot reacts to obstacles in its path. You can experiment by:</p>
+<ul>
+  <li>Adjusting the <strong>threshold_distance</strong> to make the robot more or less sensitive to nearby objects.</li>
+  <li>Changing the <strong>twist.linear.x</strong> and <strong>twist.angular.z</strong> values to modify the robot’s speed and turning rate.</li>
+</ul>
+
+<hr style="border:none; border-top:1px solid #30363d; margin:1.5em 0;" />
+<!-- ===================== CHUNK 5 (Enhanced Dark Visuals) ===================== -->
+
+<center>
+  <h1 style="font-size:48px; font-weight:900; text-align:center; margin:0.6em 0; background:linear-gradient(135deg,#111827,#1e293b); padding:18px; border-radius:14px; color:#58a6ff; box-shadow:0 4px 25px rgba(0,0,0,0.4);">
+    Mission Roboclick 1.0 - by Agent Nxtbot 007
+  </h1>
+</center>
+
+<hr style="border:none; border-top:1px solid #30363d;" />
+
+<h2 id="objectives-for-the-class" style="color:#79c0ff;">
+  <strong>Congratulations, rookie roboticists!<br>
+  You've just completed your training on how robots move and perceive the world.<br>
+  Now it's time to prove that your bot can do more than just wander around aimlessly.</strong>
+</h2>
+
+<p>🧠 <strong>Your Mission Objective (3-step operation):</strong></p>
+<ul style="line-height:1.8;">
+  <li>Move from its spawn position to the target zone.</li>
+  <li>Take a picture (NxtWave logo wall).</li>
+  <li>Relocate to the next room, right beside the current one.</li>
+</ul>
+
+<hr style="border:none; border-top:1px solid #30363d;" />
+
+<h2 id="steps-to-complete-the-mission" style="color:#58a6ff;">
+  Sample Code Block to Complete the Mission
+</h2>
+
+<ul>
+  <li>Use the provided code template to program your robot to execute the move-and-capture operation.</li>
+  <li>Create a Python file in the following directory:
+    <pre style="background:#161b22; padding:1em; border-radius:10px; color:#fff;"><code>sudo apt install ros-humble-cv-bridge python3-opencv
+cd ~/simulation_ws/src/scripts
+touch move_and_capture.py</code><button class="copy-btn">Copy</button></pre>
+  </li>
+  <li>Now open the file in a text editor and add the following sample code:</li>
+</ul>
+
+<pre style="background:#161b22; padding:1em; border-radius:12px; color:#fff; font-size:15px; box-shadow:0 4px 20px rgba(0,0,0,0.4); max-height:600px; overflow:auto;"><code>#!/usr/bin/env python3
+import rclpy
+from rclpy.node import Node
+from geometry_msgs.msg import Twist
+from sensor_msgs.msg import Image
+from cv_bridge import CvBridge
+import cv2
+import time
+import os
+
+class MoveAndCapture(Node):
+    def __init__(self):
+        super().__init__('move_and_capture')
+        self.cmd_pub = self.create_publisher(Twist, '/cmd_vel', 10)
+        self.image_sub = self.create_subscription(Image, '/camera/image_raw', self.image_callback, 10)
+        self.bridge = CvBridge()
+        self.image_saved = False
+        self.capture_enabled = False
+
+
+    def image_callback(self, msg):
+        if self.capture_enabled and not self.image_saved:
+            cv_image = self.bridge.imgmsg_to_cv2(msg, desired_encoding='bgr8')
+            filename = os.path.expanduser(f'~/captured_image_{int(time.time())}.png')
+            cv2.imwrite(filename, cv_image)
+            self.get_logger().info(f'Image saved: {filename}')
+            self.image_saved = True
+
+
+def main(args=None):
+    rclpy.init(args=args)
+    node = MoveAndCapture()
+    twist = Twist()
+
+    # Move forward slightly
+    node.get_logger().info('Moving forward...')
+    twist.linear.x = 0.25
+    twist.angular.z = 0.0
+    start_time = node.get_clock().now().seconds_nanoseconds()[0]
+    while node.get_clock().now().seconds_nanoseconds()[0] - start_time < 10.0:
+        node.cmd_pub.publish(twist)
+        rclpy.spin_once(node, timeout_sec=0.1)
+    twist.linear.x = 0.0
+    twist.angular.z = 0.0
+    node.cmd_pub.publish(twist)
+    time.sleep(1.0)
+
+    node.get_logger().info('Moving forward...')
+    twist.linear.x = 0.25
+    twist.angular.z = 0.0
+    start_time = node.get_clock().now().seconds_nanoseconds()[0]
+    while node.get_clock().now().seconds_nanoseconds()[0] - start_time < 10.0:
+        node.cmd_pub.publish(twist)
+        rclpy.spin_once(node, timeout_sec=0.1)
+    twist.linear.x = 0.0
+    twist.angular.z = 0.0
+    node.cmd_pub.publish(twist)
+    time.sleep(1.0)
+
+    # Rotate right
+    node.get_logger().info('Rotating right...')
+    twist.linear.x = 0.0
+    twist.angular.z = -0.1
+    start_time = node.get_clock().now().seconds_nanoseconds()[0]
+    while node.get_clock().now().seconds_nanoseconds()[0] - start_time < 16.0:
+        node.cmd_pub.publish(twist)
+        rclpy.spin_once(node, timeout_sec=0.1)
+        time.sleep(0.05)
+    twist.linear.x = 0.0
+    twist.angular.z = 0.0
+    node.cmd_pub.publish(twist)
+    time.sleep(1.0)
+
+    node.get_logger().info('Moving forward...')
+    twist.linear.x = 0.25
+    twist.angular.z = 0.0
+    start_time = node.get_clock().now().seconds_nanoseconds()[0]
+    while node.get_clock().now().seconds_nanoseconds()[0] - start_time < 10.0:
+        node.cmd_pub.publish(twist)
+        rclpy.spin_once(node, timeout_sec=0.1)
+    twist.linear.x = 0.0
+    twist.angular.z = 0.0
+    node.cmd_pub.publish(twist)
+    time.sleep(1.0)
+
+    node.get_logger().info('Moving forward...')
+    twist.linear.x = 0.25
+    twist.angular.z = 0.0
+    start_time = node.get_clock().now().seconds_nanoseconds()[0]
+    while node.get_clock().now().seconds_nanoseconds()[0] - start_time < 10.0:
+        node.cmd_pub.publish(twist)
+        rclpy.spin_once(node, timeout_sec=0.1)
+    twist.linear.x = 0.0
+    twist.angular.z = 0.0
+    node.cmd_pub.publish(twist)
+    time.sleep(1.0)
+
+    node.get_logger().info('Moving forward...')
+    twist.linear.x = 0.25
+    twist.angular.z = 0.0
+    start_time = node.get_clock().now().seconds_nanoseconds()[0]
+    while node.get_clock().now().seconds_nanoseconds()[0] - start_time < 10.0:
+        node.cmd_pub.publish(twist)
+        rclpy.spin_once(node, timeout_sec=0.1)
+    twist.linear.x = 0.0
+    twist.angular.z = 0.0
+    node.cmd_pub.publish(twist)
+    time.sleep(1.0)
+
+    node.get_logger().info('Moving forward...')
+    twist.linear.x = 0.25
+    twist.angular.z = 0.0
+    start_time = node.get_clock().now().seconds_nanoseconds()[0]
+    while node.get_clock().now().seconds_nanoseconds()[0] - start_time < 10.0:
+        node.cmd_pub.publish(twist)
+        rclpy.spin_once(node, timeout_sec=0.1)
+    twist.linear.x = 0.0
+    twist.angular.z = 0.0
+    node.cmd_pub.publish(twist)
+    time.sleep(1.0)
+
+    node.get_logger().info('Moving forward...')
+    twist.linear.x = 0.25
+    twist.angular.z = 0.0
+    start_time = node.get_clock().now().seconds_nanoseconds()[0]
+    while node.get_clock().now().seconds_nanoseconds()[0] - start_time < 9.0:
+        node.cmd_pub.publish(twist)
+        rclpy.spin_once(node, timeout_sec=0.1)
+    twist.linear.x = 0.0
+    twist.angular.z = 0.0
+    node.cmd_pub.publish(twist)
+    time.sleep(1.0)
+
+    # Rotate right
+    node.get_logger().info('Rotating right...')
+    twist.linear.x = 0.0
+    twist.angular.z = -0.1
+    start_time = node.get_clock().now().seconds_nanoseconds()[0]
+    while node.get_clock().now().seconds_nanoseconds()[0] - start_time < 16.0:
+        node.cmd_pub.publish(twist)
+        rclpy.spin_once(node, timeout_sec=0.1)
+        time.sleep(0.05)
+    twist.linear.x = 0.0
+    twist.angular.z = 0.0
+    node.cmd_pub.publish(twist)
+    time.sleep(1.0)
+
+    node.get_logger().info('Moving forward...')
+    twist.linear.x = 0.25
+    twist.angular.z = 0.0
+    start_time = node.get_clock().now().seconds_nanoseconds()[0]
+    while node.get_clock().now().seconds_nanoseconds()[0] - start_time < 10.0:
+        node.cmd_pub.publish(twist)
+        rclpy.spin_once(node, timeout_sec=0.1)
+    twist.linear.x = 0.0
+    twist.angular.z = 0.0
+    node.cmd_pub.publish(twist)
+    time.sleep(1.0)
+
+    node.get_logger().info('Moving forward...')
+    twist.linear.x = 0.25
+    twist.angular.z = 0.0
+    start_time = node.get_clock().now().seconds_nanoseconds()[0]
+    while node.get_clock().now().seconds_nanoseconds()[0] - start_time < 10.0:
+        node.cmd_pub.publish(twist)
+        rclpy.spin_once(node, timeout_sec=0.1)
+    twist.linear.x = 0.0
+    twist.angular.z = 0.0
+    node.cmd_pub.publish(twist)
+    time.sleep(1.0)
+
+    # Rotate right
+    node.get_logger().info('Rotating right...')
+    twist.linear.x = 0.0
+    twist.angular.z = 0.1
+    start_time = node.get_clock().now().seconds_nanoseconds()[0]
+    while node.get_clock().now().seconds_nanoseconds()[0] - start_time < 16.0:
+        node.cmd_pub.publish(twist)
+        rclpy.spin_once(node, timeout_sec=0.1)
+        time.sleep(0.05)
+    twist.linear.x = 0.0
+    twist.angular.z = 0.0
+    node.cmd_pub.publish(twist)
+    time.sleep(1.0)
+
+    node.capture_enabled = True
+    node.get_logger().info('Capturing image...')
+    timeout = node.get_clock().now().seconds_nanoseconds()[0] + 5
+    while not node.image_saved and node.get_clock().now().seconds_nanoseconds()[0] < timeout:
+        rclpy.spin_once(node, timeout_sec=0.1)
+
+    node.destroy_node()
+    rclpy.shutdown()
+
+if __name__ == '__main__':
+    main()
+ </code><button class="copy-btn">Copy</button></pre>
+
+<hr style="border:none; border-top:1px solid #30363d; margin:1.5em 0;" />
+
+<h2 id="final-thoughts" style="color:#79c0ff;">Final Thoughts</h2>
+
+<p style="font-size:18px; line-height:1.8; text-align:center; color:#e6edf3;">
+🤖 Robots are no longer just machines — they are extensions of human creativity and problem-solving.<br>
+By learning how they <strong>move</strong> and how they <strong>perceive</strong>, you now hold the keys to shaping the future of intelligent systems.
+</p>
+
+<p style="font-size:18px; text-align:center; color:#58a6ff;">
+The next breakthrough could come from you. 🚀
+</p>
+
+<!-- Copy + Highlight JS Integration -->
+<script>
+  hljs.highlightAll();
+
+  // Add "Copy" buttons to all <pre><code> blocks
+  document.querySelectorAll("pre").forEach((pre) => {
+    const button = document.createElement("button");
+    button.innerText = "Copy";
+    button.classList.add("copy-btn");
+    pre.style.position = "relative";
+    pre.appendChild(button);
+
+    button.addEventListener("click", async () => {
+      const codeBlock = pre.querySelector("code");
+      const codeText = codeBlock ? codeBlock.innerText : "";
+
+      try {
+        await navigator.clipboard.writeText(codeText.trim());
+        button.innerText = "Copied!";
+        button.style.background = "#2ea043";
+        setTimeout(() => {
+          button.innerText = "Copy";
+          button.style.background = "#00bcd4";
+        }, 1500);
+      } catch (err) {
+        console.error("Copy failed:", err);
+      }
+    });
+  });
+</script>
+
+<!-- ========================= 🌙 Footer ========================= -->
+<footer style="margin-top:3em; background:#0d1117; color:#9aa0a6; text-align:center; padding:25px; border-top:2px solid #58a6ff; border-radius:12px 12px 0 0; font-family:'Segoe UI',sans-serif; box-shadow:0 -2px 10px rgba(0,0,0,0.4);">
+  <p style="font-size:17px;">🦾 <strong>Workshop Guide</strong></p>
+  <p><a href="#toc-container" style="color:#58a6ff; text-decoration:none; font-weight:600;">Back to Top ↑</a></p>
+</footer>
+
+<script>
+  // Smooth scrolling for internal anchors
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener("click", function (e) {
+      e.preventDefault();
+      document.querySelector(this.getAttribute("href")).scrollIntoView({
+        behavior: "smooth"
+      });
+    });
+  });
+</script>
+
+</body>
+</html>
